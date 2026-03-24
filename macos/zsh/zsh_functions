@@ -1,0 +1,43 @@
+# ghqのリポジトリをfzfで検索して、選択したリポジトリにcdする
+function ghqFzf() {
+    local src=$(ghq list | fzf --reverse --preview "ls -laTp $(ghq root)/{} | tail -n+4 | awk '{print \$9\"/\"\$6\"/\"\$7 \" \" \$10}'")
+    if [ -n "$src" ]; then
+        BUFFER="cd $(ghq root)/$src"
+        zle accept-line
+    fi 
+    zle -R -c
+}
+zle -N ghqFzf
+bindkey '^]' ghqFzf
+
+# fzf history search
+function fzf-select-history() {
+    BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^r' fzf-select-history
+
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
+# ffmpeg を使って動画を GIF に変換する
+function ffmpegcv() {
+    # 引数がない場合は使い方を表示
+    if [[ -z "$1" ]]; then
+        echo "Usage: ffmpegcv filename.mov [width]"
+        return 1
+    fi
+
+    local input="$1"
+    local width="${2:-1080}" # 第2引数があればそれを使う。なければ1080。
+    local output="${input%.*}.gif"
+
+    echo "Converting $input to $output (width: ${width}px)..."
+
+    ffmpeg -i "$input" \
+        -vf "fps=10,scale=${width}:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+        -y "$output"
+
+    echo "Done!"
+}

@@ -1,0 +1,49 @@
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# mise
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+
+# Starship
+eval "$(starship init zsh)"
+
+# Sheldon
+eval "$(sheldon source)"
+
+# VSCode
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* }
+
+# Read alias
+if [ -f "$HOME/.zsh_alias" ]; then
+    source "$HOME/.zsh_alias"
+fi
+
+# Read functions
+if [ -f "$HOME/.zsh_functions" ]; then
+    source "$HOME/.zsh_functions"
+fi
+
+alias cat_alias='cat ~/.zsh_alias'
+
+ISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt auto_pushd
+setopt auto_cd
+setopt no_beep
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export VOLTA_FEATURE_PNPM=1

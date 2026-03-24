@@ -1,0 +1,10 @@
+[user]
+	name = tk07Sky
+	email = recode.seadex777@gmail.com
+
+[ghq]
+	root = ~/dev
+
+[core]
+	ignorecase = false
+	editor = nvim

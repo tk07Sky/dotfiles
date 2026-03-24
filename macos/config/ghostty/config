@@ -1,0 +1,42 @@
+# font settings
+font-family = "JetBrains Mono NL"
+font-family = "UDEV Gothic 35NF"
+font-size = 14
+font-thicken = true
+font-feature = "-calt"
+font-feature = "-dlig"
+font-feature = "-liga"
+
+# background
+background-opacity = 0.5
+background-blur-radius = 20
+
+# theme
+theme = GitLab Dark Grey
+
+# window settings
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+initial-window = false
+
+# Mac settings
+macos-titlebar-style = tabs
+
+# notifications
+desktop-notifications = true
+
+# quick terminal
+quick-terminal-position = "top"
+quick-terminal-size = "70%,100%"
+quick-terminal-screen = "main"
+quick-terminal-animation-duration = 0
+quick-terminal-autohide = "false"
+
+# key bind
+keybind = "global:cmd+space=toggle_quick_terminal"
+keybind = "shift+enter=text:\n"
+
+# others
+bell-features = "system,audio"
+window-save-state = "never"
