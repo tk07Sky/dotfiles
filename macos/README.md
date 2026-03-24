@@ -38,7 +38,8 @@ cd macos
 1. **Homebrew** が未インストールの場合、自動でインストールします。
 2. 各設定ファイルをホームディレクトリへシンボリックリンクで展開します。
 3. `Brewfile` を使って Homebrew パッケージを一括インストールします (`brew bundle`)。
-4. `~/.zshrc` に `~/.zsh_optrc` を source する行を追記します。
+4. **Volta** が未インストールの場合、自動でインストールします。
+5. `~/.zshrc` に `~/.zsh_optrc` を source する行を追記します。
 
 既存のファイルがある場合は `~/.dotfiles_backup/<timestamp>/` にバックアップされます。
 
@@ -74,3 +75,4 @@ cd macos
 | [Sheldon](https://sheldon.cli.rs/) | Zsh プラグインマネージャ |
 | [tmux](https://github.com/tmux/tmux) | ターミナルマルチプレクサ |
 | [Ghostty](https://ghostty.org/) | ターミナルエミュレータ |
+| [Volta](https://volta.sh/) | Node.js ツールチェーンマネージャ |

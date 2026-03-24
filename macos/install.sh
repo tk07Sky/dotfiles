@@ -66,6 +66,15 @@ if [ -f "$DOTFILES_DIR/config/homebrew/Brewfile" ]; then
     brew bundle --file="$DOTFILES_DIR/config/homebrew/Brewfile"
 fi
 
+# Volta
+info "Installing Volta..."
+if ! command -v volta &> /dev/null; then
+    curl https://get.volta.sh | bash
+    success "Volta installed"
+else
+    success "Volta is already installed"
+fi
+
 # .zshrc setup
 ZSHRC="$HOME/.zshrc"
 SOURCE_STR="[ -f \"$HOME/.zsh_optrc\" ] && source \"$HOME/.zsh_optrc\""
@@ -79,7 +88,9 @@ if ! grep -qF "$SOURCE_STR" "$ZSHRC"; then
     echo "$SOURCE_STR" >> "$ZSHRC"
     success "added source line to $ZSHRC"
 else
-    info "source line already exists in $ZSHRC"
+    success "source line already exists in $ZSHRC"
 fi
+
+source "$ZSHRC"
 
 success "Done!"
