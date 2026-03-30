@@ -22,10 +22,3 @@ github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
-
-[plugins.zsh-completions-settings]
-inline = """
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z1-2}={A-Z1-2}'
-"""

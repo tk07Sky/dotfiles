@@ -35,6 +35,11 @@ setopt auto_pushd
 setopt auto_cd
 setopt no_beep
 
+autoload -Uz compinit
+compinit -C
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z1-2}={A-Z1-2}'
+
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
