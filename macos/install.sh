@@ -59,6 +59,7 @@ link "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
 link "$DOTFILES_DIR/zsh/zsh_alias" "$HOME/.zsh_alias"
 link "$DOTFILES_DIR/zsh/zsh_functions" "$HOME/.zsh_functions"
 link "$DOTFILES_DIR/zsh/zsh_optrc" "$HOME/.zsh_optrc"
+link "$DOTFILES_DIR/zsh/zshenv" "$HOME/.zshenv"
 
 # Brewfile
 if [ -f "$DOTFILES_DIR/config/homebrew/Brewfile" ]; then
@@ -92,5 +93,6 @@ else
 fi
 
 source "$ZSHRC"
+source "$HOME/.zshenv"
 
 success "Done!"
